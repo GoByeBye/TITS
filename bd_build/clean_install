@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+ARGS="$*"
+NO_REC="--no-install-recommends"
+REC="--install-recommends"
+
+if [ "$ARGS" == "REC" ]; then
+    NO_REC=""
+    ARGS=$(sed "s/$REC//g" <<< "$ARGS")
+fi
+
+echo "Installing package(s): $ARGS"
+
+# Quietly install packages
+# This is split on purpose to allow for multiple packages to be installed  
+apt-get -q update && apt-get -qy $NO_REC install $ARGS \
+    && apt-get -qy autoremove \
+    && apt-get -qy clean \
+    && rm -rf /var/lib/apt/lists/* # Clean up apt cache
