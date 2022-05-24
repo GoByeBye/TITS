@@ -1,2 +1,2 @@
-# UNDIES
-UNDIE stands for "Unquestionably a Notoriously bad Dick and ass Implementation for Everyone who doesn't read Source"
+# TITS
+TITS stands for "Totally usefull Implmentation of ass and dick with Trivial Sexiness"
