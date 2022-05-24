@@ -4,6 +4,6 @@
 [submodule "scripts/Log4Bash"]
 	path = scripts/Log4Bash
 	url = https://github.com/GoByeBye/Log4Bash.git
-[submodule "dick"]
-	path = ass/dick
-	url = https://github.com/Facinorous-420/dick
+[submodule "ass/dick"]
+path = ass/dick
+url = https://github.com/Facinorous-420/dick.git
