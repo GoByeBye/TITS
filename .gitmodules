@@ -1,0 +1,9 @@
+[submodule "submodules/Log4Bash"]
+	path = submodules/Log4Bash
+	url = https://github.com/GoByeBye/Log4Bash.git
+[submodule "submodules/ass"]
+	path = submodules/ass
+	url = https://github.com/tycrek/ass.git
+[submodule "submodules/dick"]
+	path = submodules/dick
+	url = https://github.com/Facinorous-420/dick.git
