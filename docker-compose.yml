@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  tits:
+    image: undies:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 65448:65448

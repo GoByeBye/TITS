@@ -4,6 +4,8 @@ ARG BASE_IMAGE=ubuntu:focal
 ARG DEBIAN_FRONTEND=noninteractive
 FROM ${BASE_IMAGE}
 
+ENV REBUILDVAR=false
+
 COPY /bd_build /bd_build
 
 # Create user
@@ -37,9 +39,13 @@ WORKDIR /home/undies/ass
 RUN npm i -g typescript
 
 USER undies
-RUN npm i --save-dev
-WORKDIR /home/undies/ass/dick
-RUN npm i
+
+# Make sure ass has it's config files ready
+RUN mkdir -p /home/undies/ass/thumbnails/ && \
+    mkdir -p /home/undies/ass/share/ && \
+    touch /home/undies/ass/config.json && \
+    touch /home/undies/ass/auth.json && \
+    touch /home/undies/ass/data.json
 
 COPY /scripts/startup.sh /startup.sh
 
