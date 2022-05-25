@@ -31,7 +31,7 @@ clean_install apt-transport-https ca-certificates
 clean_install software-properties-common
 
 # Tools needed for functionality 
-clean_install curl git nano
+clean_install curl git ffmpeg nano
 
 # Upgrade all packages.
 apt-get update -y && apt-get upgrade -y --no-install-recommends -o Dpkg::Options::="--force-confold"
