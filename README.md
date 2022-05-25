@@ -1,2 +1,2 @@
 # TITS
-TITS stands for "Totally useful Implmentation of dick and ass with Trivial Sexiness"
+TITS stands for "Totally useful Implementation of dick and ass with Trivial Sexiness"
