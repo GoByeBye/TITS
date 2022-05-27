@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+
 set -e
 source /Log4Bash/log4bash.sh
 
@@ -23,7 +25,11 @@ function envInstall() {
         echo "{}" > ./auth.json
         npm run new-token ass
     fi
-    cat auth.json
+
+    # Check if ./data.json is empty
+    if [ ! -s data.json ]; then
+        echo "{}" > ./data.json
+    fi
 }
 
 function envCheck() {
@@ -112,34 +118,36 @@ function setConfig() {
 
 
     # Generate the config.json file
-    echo "{" > config.json
-    echo "  \"host\": \"$host\"," >> config.json
-    echo "  \"port\": $port," >> config.json
-    echo "  \"domain\": \"$domain\"," >> config.json
-    echo "  \"maxUploadSize\": $maxUploadSize," >> config.json
-    echo "  \"isProxied\": $isProxied," >> config.json
-    echo "  \"useSsl\": $useSsl," >> config.json
-    echo "  \"resourceIdSize\": $resourceIdSize," >> config.json
-    echo "  \"resourceIdType\": \"$resourceIdType\"," >> config.json
-    echo "  \"spaceReplace\": \"$spaceReplace\"," >> config.json
-    echo "  \"gfyIdSize\": $gfyIdSize," >> config.json
-    echo "  \"mediaStrict\": $mediaStrict," >> config.json
-    echo "  \"viewDirect\": $viewDirect," >> config.json
-    echo "  \"dataEngine\": \"$dataEngine\"," >> config.json
-    echo "  \"frontendName\": \"$frontendName\"," >> config.json
-    echo "  \"indexFile\": \"$indexFile\"," >> config.json
-    echo "  \"useSia\": $useSia," >> config.json
-    echo "  \"s3enabled\": $s3enabled," >> config.json
-    echo "  \"s3endpoint\": \"$s3endpoint\"," >> config.json
-    echo "  \"s3bucket\": \"$s3bucket\"," >> config.json
-    echo "  \"s3usePathStyle\": $s3usePathStyle," >> config.json
-    echo "  \"s3accessKey\": \"$s3accessKey\"," >> config.json
-    echo "  \"s3secretKey\": \"$s3secretKey\"," >> config.json
-    echo "  \"__WARNING__\": \"The following configs are no longer used and are here for backwards compatibility. For optimal use, DO NOT edit them.\"," >> config.json
-    echo "  \"diskFilePath\": \"uploads/\"," >> config.json
-    echo "  \"saveWithDate\": true," >> config.json
-    echo "  \"saveAsOriginal\": false" >> config.json
-    echo "}" >> config.json
+    {
+        echo "{" > config.json
+        echo "  \"host\": \"$host\"," 
+        echo "  \"port\": $port," 
+        echo "  \"domain\": \"$domain\"," 
+        echo "  \"maxUploadSize\": $maxUploadSize," 
+        echo "  \"isProxied\": $isProxied," 
+        echo "  \"useSsl\": $useSsl," 
+        echo "  \"resourceIdSize\": $resourceIdSize," 
+        echo "  \"resourceIdType\": \"$resourceIdType\"," 
+        echo "  \"spaceReplace\": \"$spaceReplace\"," 
+        echo "  \"gfyIdSize\": $gfyIdSize," 
+        echo "  \"mediaStrict\": $mediaStrict," 
+        echo "  \"viewDirect\": $viewDirect," 
+        echo "  \"dataEngine\": \"$dataEngine\"," 
+        echo "  \"frontendName\": \"$frontendName\"," 
+        echo "  \"indexFile\": \"$indexFile\"," 
+        echo "  \"useSia\": $useSia," 
+        echo "  \"s3enabled\": $s3enabled," 
+        echo "  \"s3endpoint\": \"$s3endpoint\"," 
+        echo "  \"s3bucket\": \"$s3bucket\"," 
+        echo "  \"s3usePathStyle\": $s3usePathStyle," 
+        echo "  \"s3accessKey\": \"$s3accessKey\"," 
+        echo "  \"s3secretKey\": \"$s3secretKey\"," 
+        echo "  \"__WARNING__\": \"The following configs are no longer used and are here for backwards compatibility. For optimal use, DO NOT edit them.\"," 
+        echo "  \"diskFilePath\": \"uploads/\"," 
+        echo "  \"saveWithDate\": true," 
+        echo "  \"saveAsOriginal\": false" 
+        echo "}" 
+    } >> config.json
 }
 
 
@@ -153,7 +161,7 @@ function takeOffUndies() {
     envInstall
     INFO "Starting up Dick frontend server"
     INFO "Starting ASS Backend server"
-    bash -c "cd /home/undies/ass/dick; npm start"
+    bash -c "cd /home/undies/ass/; cat ./auth.json;npm start"
 }
 
 takeOffUndies
